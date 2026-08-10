@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin — Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <span class="brand-name">Congistry</span>
+        <span class="brand-sub">v0.1 — final project</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-label">Admin</div>
+      <div class="nav-item active" id="nav-events">
+        <span>Events</span>
+        <span class="nav-count" id="nav-events-count">0</span>
+      </div>
+      <div class="nav-item" id="nav-users">
+        <span>Users</span>
+      </div>
+      <div class="nav-item" id="nav-registrations">
+        <span>Registrations</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="footer-avatar">--</div>
+      <div>
+        <div class="user-name" id="footer-name">Loading…</div>
+        <div class="user-role">admin</div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1>Events</h1>
+        <div class="breadcrumb">admin / events</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="btn" id="logout-btn" type="button">Log out</button>
+        <div class="timestamp" id="clock"></div>
+      </div>
+    </div>
+
+    <div id="events-view">
+      <div class="grid-2">
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">All events</span>
+              <div class="panel-actions">
+                <button class="btn" id="refresh-btn">Refresh</button>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Capacity</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="events-table-body">
+                <tr class="empty-row">
+                  <td colspan="6">Loading events…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">New event</span>
+            </div>
+            <form class="side-panel-body" id="event-form">
+              <input type="hidden" id="event-id" value="">
+              <div class="field">
+                <label class="field-label" for="event-title">Title</label>
+                <input type="text" id="event-title" placeholder="e.g. Intro to Firebase" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="event-category">Category</label>
+                <select id="event-category">
+                  <option value="seminar">Seminar</option>
+                  <option value="workshop">Workshop</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label" for="event-date">Date</label>
+                <input type="date" id="event-date" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="event-capacity">Capacity</label>
+                <input type="number" id="event-capacity" placeholder="50" min="1" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="event-description">Details</label>
+                <textarea id="event-description" rows="4" placeholder="Add a short description so participants can see what the session is about." required></textarea>
+              </div>
+              <div class="panel-actions" style="justify-content:flex-start;">
+                <button class="btn primary" type="submit" id="event-submit-btn">Create event</button>
+                <button class="btn" type="button" id="event-reset-btn">Reset</button>
+              </div>
+              <div id="form-status" style="font-size:12px; color: var(--text-dim);"></div>
+            </form>
+            <div class="note">New events are created with status <strong style="color:var(--text)">open</strong>. Assign an organizer from the table below after creation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="users-view" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Manage users</span>
+          <div class="panel-actions">
+            <button class="btn" id="refresh-users-btn" type="button">Refresh</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div id="users-management-list">
+            <div class="empty-row">Loading users…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="registrations-view" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Manage registrations</span>
+        </div>
+        <div class="panel-body">
+          <div id="registrations-management-list">
+            <div class="empty-row">Loading registrations…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script type="module" src="../assets/js/admin-dashboard.js"></script>
+</body>
+</html>

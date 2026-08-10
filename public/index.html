@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Congistry — Seminars &amp; Workshops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+  }
+
+  .landing-shell {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .landing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 36px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  .landing-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .landing-header-actions .user-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+
+  .landing-main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .landing-main::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .landing-hero {
+    margin-bottom: 32px;
+  }
+
+  .landing-hero h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .landing-hero p {
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+
+  .catalog-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .catalog-toolbar select, .catalog-toolbar input {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 11px;
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-size: 13px;
+  }
+
+  .catalog-toolbar input { flex: 1; }
+</style>
+</head>
+<body>
+<div class="landing-shell">
+  <div class="landing-header">
+    <div class="auth-brand" style="margin-bottom:0;">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Congistry</span>
+    </div>
+    <div class="landing-header-actions" id="header-actions">
+      <a href="../pages/login.html"><button class="btn">Log in</button></a>
+      <a href="../pages/register.html"><button class="btn primary">Register</button></a>
+    </div>
+  </div>
+
+  <main class="landing-main">
+    <div class="landing-hero">
+      <h1>Seminars &amp; workshops, in one place</h1>
+      <p>Browse what's open, then log in to register.</p>
+    </div>
+
+    <div class="catalog-toolbar">
+      <input type="text" id="search-input" placeholder="Search events…">
+      <select id="category-filter">
+        <option value="all">All categories</option>
+        <option value="seminar">Seminar</option>
+        <option value="workshop">Workshop</option>
+      </select>
+    </div>
+
+    <div class="panel">
+      <div id="catalog-list">
+        <div class="empty-row"><span>Loading events…</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../assets/js/index.js"></script>
+</body>
+</html>

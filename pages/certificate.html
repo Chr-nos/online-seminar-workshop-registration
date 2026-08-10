@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate — Congistry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #08090D 0%, #0d1118 100%);
+    }
+
+    .certificate-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+    }
+
+    .certificate-shell {
+      width: min(980px, 100%);
+      background: #0f141b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .certificate-shell::before,
+    .certificate-shell::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(94, 234, 160, 0.08);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .certificate-shell::before {
+      top: -70px;
+      left: -70px;
+    }
+
+    .certificate-shell::after {
+      right: -70px;
+      bottom: -70px;
+    }
+
+    .certificate-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 26px 30px 22px;
+      text-align: center;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .certificate-badge {
+      display: inline-block;
+      width: fit-content;
+      margin: 0 auto 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(94, 234, 160, 0.08);
+      color: var(--accent);
+      border: 1px solid rgba(94, 234, 160, 0.25);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .certificate-topline {
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .certificate-card h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .certificate-intro,
+    .certificate-copy {
+      color: var(--text-mid);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .certificate-name {
+      margin: 10px auto 14px;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      border-bottom: 2px solid rgba(94, 234, 160, 0.45);
+      display: inline-block;
+      padding: 0 18px 8px;
+      min-width: min(440px, 80%);
+    }
+
+    .certificate-event {
+      margin-top: 18px;
+      margin-bottom: 22px;
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+
+    .certificate-meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 16px;
+      margin: 22px auto 26px;
+      width: min(700px, 100%);
+      text-align: left;
+    }
+
+    .certificate-meta-row > div {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .certificate-meta-label {
+      display: block;
+      color: var(--text-dim);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .certificate-note {
+      width: min(700px, 100%);
+      margin: 0 auto 24px;
+      padding: 14px 18px;
+      background: rgba(94, 234, 160, 0.05);
+      border: 1px solid rgba(94, 234, 160, 0.18);
+      border-radius: 12px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .certificate-footer-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      width: min(700px, 100%);
+      margin: 0 auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+
+    .signature-line {
+      width: 190px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.22);
+      margin-bottom: 8px;
+    }
+
+    .signature-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .certificate-id-box {
+      min-width: 170px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .certificate-id-box small {
+      display: block;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .certificate-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+      gap: 10px;
+    }
+
+    @media (max-width: 680px) {
+      .certificate-card {
+        padding: 22px 18px;
+      }
+
+      .certificate-meta-row {
+        grid-template-columns: 1fr;
+      }
+
+      .certificate-footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .certificate-name {
+        min-width: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .certificate-actions {
+        display: none;
+      }
+
+      .certificate-page {
+        padding: 0;
+      }
+
+      .certificate-shell {
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background: white;
+      }
+
+      .certificate-card {
+        background: white;
+        border: none;
+        color: black;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate-page">
+    <div class="certificate-shell">
+      <div id="certificate-card" class="certificate-card">
+        <div class="empty-row">This feature is currently unavailable.</div>
+      </div>
+      <div class="certificate-actions">
+        <button class="btn primary" id="print-btn" type="button">Print / Download</button>
+        <a href="participant-dashboard.html" class="btn" type="button">Back to dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/js/certificates.js"></script>
+</body>
+</html>

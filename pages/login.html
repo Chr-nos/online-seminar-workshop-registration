@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+<meta charset="UTF-8">
+<title>Log in — Congistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<style>
+
+</style>
+
+<body>
+<div class="auth-shell">
+  <canvas id="particle-bg"></canvas>
+  <div class="auth-card login-card">
+    <div class="auth-brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Congistry</span>
+    </div>
+
+    <div class="auth-title">Log in</div>
+    <div class="auth-sub">Access your seminar and workshop dashboard.</div>
+
+    <div class="auth-error" id="error-box"></div>
+
+    <form class="auth-form" id="login-form">
+      <div class="field">
+        <label class="field-label" for="email">Email or name</label>
+        <input type="text" id="email" placeholder="you@example.com or your name" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+      <button class="btn primary" type="submit" id="submit-btn">Log in</button>
+    </form>
+
+    <div class="auth-footer">
+      <a href="../public/index.html" class="auth-link">← Back to menu</a>
+      <br>
+      Don't have an account? <a href="register.html" class="auth-link">Create one</a>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/effects/particles.js"></script>
+<script type="module" src="../assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Participant — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <span class="brand-name">Congistry</span>
+        <span class="brand-sub">participant portal</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-label">Participant</div>
+      <div class="nav-item active" data-view="events">
+        <span>Events</span>
+      </div>
+      <div class="nav-item" id="nav-certificates" data-view="certificates">
+        <span>Certificates</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="footer-avatar">--</div>
+      <div>
+        <div class="user-name" id="footer-name">Loading…</div>
+        <div class="user-role">participant</div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1>Your seminars</h1>
+        <div class="breadcrumb">participant / my events</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="btn" id="logout-btn" type="button">Log out</button>
+        <div class="timestamp" id="clock"></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Registered</div>
+        <div class="stat-value" id="registered-count">0</div>
+        <div class="stat-delta up">Active this month</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Upcoming</div>
+        <div class="stat-value" id="upcoming-count">0</div>
+        <div class="stat-delta">Next in your list</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Certificates</div>
+        <div class="stat-value" id="certificates-count">0</div>
+        <div class="stat-delta warn">Ready to claim</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Attendance</div>
+        <div class="stat-value" id="attendance-value">0%</div>
+        <div class="stat-delta up">Great streak</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <span class="panel-title">Events</span>
+      </div>
+      <div id="event-list" class="panel-body"></div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../assets/js/participant-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard — Seminar & Workshop Registration System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <span class="brand-name">EventReg</span>
+        <span class="brand-sub">v0.1 — final project</span>
+      </div>
+    </div>
+
+    <div class="role-switch">
+      <button class="role-btn active" data-role="admin" onclick="setRole('admin')">Admin</button>
+      <button class="role-btn" data-role="organizer" onclick="setRole('organizer')">Organizer</button>
+      <button class="role-btn" data-role="participant" onclick="setRole('participant')">Participant</button>
+    </div>
+
+    <nav id="nav-admin">
+      <div class="nav-label">Admin</div>
+      <div class="nav-item active">
+        <span>Overview</span>
+      </div>
+      <div class="nav-item">
+        <span>Events</span>
+        <span class="nav-count">12</span>
+      </div>
+      <div class="nav-item">
+        <span>Users</span>
+        <span class="nav-count">86</span>
+      </div>
+      <div class="nav-item">
+        <span>Registrations</span>
+        <span class="nav-count">214</span>
+      </div>
+    </nav>
+
+    <nav id="nav-organizer" style="display:none;">
+      <div class="nav-label">Organizer</div>
+      <div class="nav-item active">
+        <span>My events</span>
+        <span class="nav-count">3</span>
+      </div>
+      <div class="nav-item">
+        <span>Participants</span>
+        <span class="nav-count">119</span>
+      </div>
+      <div class="nav-item">
+        <span>Attendance</span>
+      </div>
+      <div class="nav-item">
+        <span>Certificates</span>
+        <span class="nav-count">37</span>
+      </div>
+    </nav>
+
+    <nav id="nav-participant" style="display:none;">
+      <div class="nav-label">Participant</div>
+      <div class="nav-item active">
+        <span>Catalog</span>
+      </div>
+      <div class="nav-item">
+        <span>My registrations</span>
+        <span class="nav-count">4</span>
+      </div>
+      <div class="nav-item">
+        <span>Certificates</span>
+        <span class="nav-count">2</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="footer-avatar">SW</div>
+      <div>
+        <div class="user-name" id="footer-name">Sam W.</div>
+        <div class="user-role" id="footer-role">admin</div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1 id="view-title">Overview</h1>
+        <div class="breadcrumb" id="view-breadcrumb">admin / dashboard</div>
+      </div>
+      <div class="timestamp" id="clock"></div>
+    </div>
+
+    <div class="view active" id="view-admin">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Active events</div>
+        <div class="stat-value">12</div>
+        <div class="stat-delta up">+3 this week</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Total registrations</div>
+        <div class="stat-value">214</div>
+        <div class="stat-delta up">+18 today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Pending check-ins</div>
+        <div class="stat-value">37</div>
+        <div class="stat-delta warn">3 events today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Certificates issued</div>
+        <div class="stat-value">142</div>
+        <div class="stat-delta up">66% of attendees</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Events</span>
+            <div class="panel-actions">
+              <button class="btn">Filter</button>
+              <button class="btn primary">+ New event</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Capacity</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="event-title">Intro to Cloud Security</div>
+                  <div class="event-sub">EVT-0091 · Organizer: D. Wijaya</div>
+                </td>
+                <td class="mono">seminar</td>
+                <td class="mono">Aug 12</td>
+                <td>
+                  <span class="capacity-bar"><span class="capacity-fill" style="width: 82%"></span></span>
+                  <span class="mono">41/50</span>
+                </td>
+                <td><span class="status open"><span class="dot"></span>open</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="event-title">Firebase for Beginners Workshop</div>
+                  <div class="event-sub">EVT-0088 · Organizer: Samuel</div>
+                </td>
+                <td class="mono">workshop</td>
+                <td class="mono">Aug 14</td>
+                <td>
+                  <span class="capacity-bar"><span class="capacity-fill high" style="width: 96%"></span></span>
+                  <span class="mono">48/50</span>
+                </td>
+                <td><span class="status waitlist"><span class="dot"></span>waitlist</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="event-title">Data Visualization with Seaborn</div>
+                  <div class="event-sub">EVT-0084 · Organizer: D. Wijaya</div>
+                </td>
+                <td class="mono">workshop</td>
+                <td class="mono">Aug 20</td>
+                <td>
+                  <span class="capacity-bar"><span class="capacity-fill" style="width: 30%"></span></span>
+                  <span class="mono">9/30</span>
+                </td>
+                <td><span class="status open"><span class="dot"></span>open</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="event-title">Business Comms Midterm Review</div>
+                  <div class="event-sub">EVT-0079 · Organizer: Samuel</div>
+                </td>
+                <td class="mono">seminar</td>
+                <td class="mono">Jul 30</td>
+                <td>
+                  <span class="capacity-bar"><span class="capacity-fill" style="width: 100%"></span></span>
+                  <span class="mono">60/60</span>
+                </td>
+                <td><span class="status closed"><span class="dot"></span>closed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Recent registrations</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Participant</th>
+                <th>Event</th>
+                <th>Registered</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rangga Putra</td>
+                <td class="mono">EVT-0091</td>
+                <td class="mono">2m ago</td>
+                <td><span class="status pending"><span class="dot"></span>pending</span></td>
+              </tr>
+              <tr>
+                <td>Alya Kusuma</td>
+                <td class="mono">EVT-0084</td>
+                <td class="mono">14m ago</td>
+                <td><span class="status checked-in"><span class="dot"></span>confirmed</span></td>
+              </tr>
+              <tr>
+                <td>Budi Santoso</td>
+                <td class="mono">EVT-0088</td>
+                <td class="mono">1h ago</td>
+                <td><span class="status cancelled"><span class="dot"></span>cancelled</span></td>
+              </tr>
+              <tr class="empty-row">
+                <td colspan="4">— end of recent activity —</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Create event</span>
+          </div>
+          <div class="side-panel-body">
+            <div class="field">
+              <label class="field-label">Title</label>
+              <input type="text" placeholder="e.g. Intro to Firebase">
+            </div>
+            <div class="field">
+              <label class="field-label">Category</label>
+              <select>
+                <option>Seminar</option>
+                <option>Workshop</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label">Capacity</label>
+              <input type="text" placeholder="50">
+            </div>
+            <button class="btn primary" style="margin-top: 4px;">Create event</button>
+          </div>
+          <div class="note">Assign an organizer after creation from the event's detail page.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="view" id="view-organizer">
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">My events</div>
+          <div class="stat-value">3</div>
+          <div class="stat-delta">1 today</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Total participants</div>
+          <div class="stat-value">119</div>
+          <div class="stat-delta up">across 3 events</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Awaiting check-in</div>
+          <div class="stat-value">22</div>
+          <div class="stat-delta warn">Intro to Cloud Security</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Certificates issued</div>
+          <div class="stat-value">37</div>
+          <div class="stat-delta">of 41 attended</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Intro to Cloud Security — participants</span>
+              <div class="panel-actions">
+                <button class="btn">Export list</button>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Participant</th>
+                  <th>Registered</th>
+                  <th>Attendance</th>
+                  <th>Certificate</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rangga Putra</td>
+                  <td class="mono">Aug 1</td>
+                  <td><span class="status checked-in"><span class="dot"></span>checked in</span></td>
+                  <td><span class="status issued"><span class="dot"></span>issued</span></td>
+                  <td><button class="btn small" disabled>Done</button></td>
+                </tr>
+                <tr>
+                  <td>Alya Kusuma</td>
+                  <td class="mono">Aug 2</td>
+                  <td><span class="status checked-in"><span class="dot"></span>checked in</span></td>
+                  <td><span class="status pending"><span class="dot"></span>not issued</span></td>
+                  <td><button class="btn small primary">Issue</button></td>
+                </tr>
+                <tr>
+                  <td>Budi Santoso</td>
+                  <td class="mono">Aug 3</td>
+                  <td><span class="status absent"><span class="dot"></span>absent</span></td>
+                  <td><span class="status pending"><span class="dot"></span>not issued</span></td>
+                  <td><button class="btn small" disabled>—</button></td>
+                </tr>
+                <tr>
+                  <td>Sinta Dewi</td>
+                  <td class="mono">Aug 5</td>
+                  <td><span class="status pending"><span class="dot"></span>awaiting</span></td>
+                  <td><span class="status pending"><span class="dot"></span>not issued</span></td>
+                  <td><button class="btn small">Check in</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">My events</span>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Intro to Cloud Security</div>
+                <div class="event-card-meta">
+                  <span>Aug 12</span>
+                  <span>41/50</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Firebase for Beginners Workshop</div>
+                <div class="event-card-meta">
+                  <span>Aug 14</span>
+                  <span>48/50</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Data Visualization with Seaborn</div>
+                <div class="event-card-meta">
+                  <span>Aug 20</span>
+                  <span>9/30</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="note" style="border-top:none; border-radius: 8px; border:1px solid var(--border-soft); margin-top: -1px;">Attendance must be marked before a certificate can be issued for that participant.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view" id="view-participant">
+      <div class="grid-2">
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Event catalog</span>
+              <div class="panel-actions">
+                <button class="btn">Search</button>
+                <button class="btn">Category</button>
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Intro to Cloud Security</div>
+                <div class="event-card-meta">
+                  <span class="mono">seminar</span>
+                  <span>Aug 12</span>
+                  <span class="progress-inline"><span class="capacity-bar"><span class="capacity-fill" style="width: 82%"></span></span>41/50</span>
+                </div>
+              </div>
+              <div class="event-card-actions">
+                <button class="btn small primary">Register</button>
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Firebase for Beginners Workshop</div>
+                <div class="event-card-meta">
+                  <span class="mono">workshop</span>
+                  <span>Aug 14</span>
+                  <span class="progress-inline"><span class="capacity-bar"><span class="capacity-fill high" style="width: 96%"></span></span>48/50</span>
+                </div>
+              </div>
+              <div class="event-card-actions">
+                <button class="btn small">Join waitlist</button>
+              </div>
+            </div>
+            <div class="event-card">
+              <div class="event-thumb"></div>
+              <div class="event-card-body">
+                <div class="event-title">Data Visualization with Seaborn</div>
+                <div class="event-card-meta">
+                  <span class="mono">workshop</span>
+                  <span>Aug 20</span>
+                  <span class="progress-inline"><span class="capacity-bar"><span class="capacity-fill" style="width: 30%"></span></span>9/30</span>
+                </div>
+              </div>
+              <div class="event-card-actions">
+                <button class="btn small primary">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">My registrations</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Business Comms Midterm Review</td>
+                  <td><span class="status issued"><span class="dot"></span>attended</span></td>
+                </tr>
+                <tr>
+                  <td>Firebase for Beginners Workshop</td>
+                  <td><span class="status waitlist"><span class="dot"></span>waitlisted</span></td>
+                </tr>
+                <tr>
+                  <td>NumPy Broadcasting Deep-Dive</td>
+                  <td><span class="status cancelled"><span class="dot"></span>cancelled</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Certificates</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Business Comms Midterm Review</td>
+                  <td><button class="btn small">Download</button></td>
+                </tr>
+                <tr class="empty-row">
+                  <td colspan="2">— 1 more certificate pending review —</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/dashboard.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

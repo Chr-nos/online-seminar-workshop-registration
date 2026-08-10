@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event details — Congistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <span class="brand-name">Congistry</span>
+        <span class="brand-sub">event overview</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-label">Navigate</div>
+      <a class="nav-item" href="login.html"><span>Log in</span></a>
+      <a class="nav-item" href="register.html"><span>Register</span></a>
+      <a class="nav-item" href="participant-dashboard.html"><span>Dashboard</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="footer-avatar">--</div>
+      <div>
+        <div class="user-name" id="footer-name">Loading…</div>
+        <div class="user-role">participant</div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <h1 id="page-title">Event details</h1>
+        <div class="breadcrumb">events / details</div>
+      </div>
+      <div class="panel-actions">
+        <a href="participant-dashboard.html" class="btn">Back to dashboard</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div id="event-details-loading" class="panel-body">
+        <div class="empty-row">Loading event…</div>
+      </div>
+      <div id="event-details-content" hidden></div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="../assets/js/event-details.js"></script>
+</body>
+</html>
